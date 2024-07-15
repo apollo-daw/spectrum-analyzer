@@ -10,5 +10,5 @@ default_fonts = ["egui-baseview/default_fonts"]
 rayon = ["egui-baseview/rayon"]
 
 [dependencies]
-baseview = {git = "https://github.com/RustAudio/baseview.git", rev = "45465c5f46abed6c6ce370fffde5edc8e4cd5aa3"}
-egui-baseview = { git = "https://github.com/BillyDM/egui-baseview.git", rev = "68c4d0e8e5c1c702a888a245f4ac50eddfdfcaed", default-features = false }
+baseview = {git = "https://github.com/RustAudio/baseview.git", rev = "579130ecb4f9f315ae52190af42f0ea46aeaa4a2"}
+egui-baseview = { git = "https://github.com/BillyDM/egui-baseview.git", rev = "d11742477e86d48f5ff718457244f58a713d68c2", default-features = false }
