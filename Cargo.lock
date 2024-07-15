@@ -50,6 +50,9 @@ dependencies = [
 [[package]]
 name = "spectrum-analyzer"
 version = "0.1.0"
+dependencies = [
+ "apollo",
+]
 
 [[package]]
 name = "syn"

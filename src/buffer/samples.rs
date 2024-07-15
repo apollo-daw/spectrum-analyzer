@@ -19,7 +19,7 @@ pub struct ChannelSamples<'slice, 'sample: 'slice> {
     pub(self) _marker: PhantomData<&'slice mut [&'sample mut [f32]]>,
 }
 
-pub struct ChannelSamplerIterator<'slice, 'sample: 'slice> {
+pub struct ChannelSamplesIterator<'slice, 'sample: 'slice> {
     pub(self) buffers: *mut [&'sample mut [f32]],
     pub(self) current_sample: usize,
     pub(self) current_channel: usize,
@@ -52,15 +52,48 @@ impl<'slice, 'sample> Iterator for SamplesIterator<'slice, 'sample> {
 
 impl<'slice, 'sample> IntoIterator for ChannelSamples<'slice, 'sample> {
     type Item = &'sample mut f32;
-    type IntoIter = ChannelSamplerIterator<'slice, 'sample>;
+    type IntoIter = ChannelSamplesIterator<'slice, 'sample>;
 
     #[inline]
     fn into_iter(self) -> Self::IntoIter {
-        ChannelSamplerIterator {
+        ChannelSamplesIterator {
             buffers: self.buffers,
             current_sample: self.current_sample,
             current_channel: 0,
             _marker: PhantomData,
         }
     }
+}
+
+impl<'slice, 'sample> Iterator for ChannelSamplesIterator<'slice, 'sample> {
+    type Item = &'sample mut f32;
+
+    #[inline]
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.current_channel < unsafe { &*self.buffers }.len() {
+            let sample = unsafe {
+                (*self.buffers)
+                    .get_unchecked_mut(self.current_channel)
+                    .get_unchecked_mut(self.current_sample)
+            };
+
+            self.current_channel += 1;
+            Some(sample)
+        } else {
+            None
+        }
+    }
+
+    #[inline]
+    fn size_hint(&self) -> (usize, Option<usize>) {
+        let remaining = unsafe { &*self.buffers }.len() - self.current_channel;
+        (remaining, Some(remaining))
+    }
+}
+
+impl ExactSizeIterator for SamplesIterator<'_, '_> {}
+impl ExactSizeIterator for ChannelSamplesIterator<'_, '_> {}
+
+impl<'slice, 'sample> ChannelSamples<'slice, 'sample> {
+
 }
