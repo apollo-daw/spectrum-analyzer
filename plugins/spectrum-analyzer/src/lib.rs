@@ -1,9 +1,10 @@
 use std::num::NonZeroU32;
 use std::sync::Arc;
 use apollo::apollo_export_vst3;
-use apollo::audio_setup::{AudioIOLayout, AuxiliaryBuffers};
+use apollo::audio_setup::{AudioIOLayout, AuxiliaryBuffers, BufferConfig};
 use apollo::buffer::Buffer;
-use apollo::context::ProcessContext;
+use apollo::context::{AsyncExecutor, InitContext, ProcessContext};
+use apollo::editor::Editor;
 use apollo::midi::MidiConfig;
 use apollo::params::Params;
 use apollo::plugin::{Plugin, ProcessStatus};
@@ -64,6 +65,22 @@ impl Plugin for SpectrumAnalyzer {
         &mut impl ProcessContext<Self>
     ) -> ProcessStatus {
         ProcessStatus::Normal
+    }
+
+    fn initialize(
+        &mut self,
+        audio_io_layout: AudioIOLayout,
+        buffer_config: &BufferConfig,
+        context: &mut impl InitContext<Self>
+    ) -> bool {
+        todo!()
+    }
+
+    fn editor(
+        &mut self,
+        async_executor: AsyncExecutor<Self>
+    ) -> Option<Box<dyn Editor>> {
+        todo!()
     }
 
     fn deactivate(&mut self) {}

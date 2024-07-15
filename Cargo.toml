@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["plugins/spectrum-analyzer"
+members = [ "apollo_egui","plugins/spectrum-analyzer"
 
 ]
 
