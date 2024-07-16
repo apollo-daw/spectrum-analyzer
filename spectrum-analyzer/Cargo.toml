@@ -1,0 +1,17 @@
+[package]
+name = "spectrum-analyzer"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.79.0"
+authors = ["Jacob Hoeflaken <jhoeflaken@live.nl>"]
+license = "GPL-3"
+
+[lib]
+name = "spectrum_analyzer"
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+nih_plug = { git = "https://github.com/robbert-vdh/nih-plug.git", branch = "master", features = ["assert_process_allocs", "standalone"] }
+nih_plug_egui = { git = "https://github.com/robbert-vdh/nih-plug.git", branch = "master" }
+rustfft = "6.1.0"
+

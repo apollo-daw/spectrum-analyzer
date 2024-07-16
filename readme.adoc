@@ -1,0 +1,16 @@
+Need to install the following packages:
+
+- `libjack-dev`
+- `libasound2-dev`
+- `libclang-dev`
+- `libgtk-3-dev`
+- `libxcb-render0-dev`
+- `libxcb-shape0-dev`
+- `libxcb-xfixes0-dev`
+- `libxkbcommon-dev`
+- `libssl-dev`
+
+[source,shell]
+----
+$ sudo apt-get install -y libjack-dev libasound2-dev libclang-dev libgtk-3-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
+----

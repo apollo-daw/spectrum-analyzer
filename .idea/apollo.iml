@@ -5,6 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/plugins/spectrum-analyzer/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/apollo_egui/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/spectrum-analyzer/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/spectrum-analyzer/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
