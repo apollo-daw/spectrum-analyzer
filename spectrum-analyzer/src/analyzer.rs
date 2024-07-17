@@ -39,8 +39,8 @@ impl Analyzer {
 
         for channel_samples in buffer.as_slice() {
             // We don't want to change the original samples, so we make a copy of them, because we
-            // need to convert them to complex numbers and [`fft.process()`] will modify the samples
-            // in place.
+            // need to convert the samples  to complex numbers and [`fft.process()`] will modify
+            // the samples in place.
             let mut complex_samples = channel_samples.into_iter()
                 .map(|&mut sample| rustfft::num_complex::Complex::new(sample, 0.0))
                 .collect::<Vec<_>>();
